@@ -10,7 +10,7 @@
                 @foreach ($problems as $problem)
                     <option value="{{ $problem['code'] }}" 
                         {{ $problem['code'] == $problemSlug ? 'selected' : '' }}
-                    >{{ $problem['name'] }}</option>
+                    >{{ $problem['name'] }} {{ $problem['is_public'] == 0 ? "(Đang ẩn)" : "" }}</option>
                 @endforeach
             </select>
         </div>
