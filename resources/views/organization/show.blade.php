@@ -21,10 +21,12 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Tên</th>
+                <th scope="col" class="text-center">Tổng lần nộp</th>
                 @if (!isset($problemSlug))
-                    <th scope="col" class="text-center">Tổng lần nộp</th>
                     <th scope="col" class="text-center">Tổng bài nộp</th>
                     <th scope="col" class="text-center">Bài đã AC</th>
+                @else
+                    <th scope="col" class="text-center">Kết quả</th>
                 @endif
             </tr>
         </thead>
@@ -37,10 +39,21 @@
                             <b style="color: #545454">{{ $user['user']['first_name'] }}</b> <br>
                             <small style="color: #999797">{{ $user['user']['username'] }}</small>
                         </td>
+                        <td class="text-center">{{ $user['total_submissions'] }}</td>
                         @if (!isset($problemSlug))
-                            <td class="text-center">123</td>
-                            <td class="text-center">123</td>
-                            <td class="text-center">123</td>
+                            <td class="text-center">{{ $user['total_problems'] }}</td>
+                            <td class="text-center">{{ $user['total_ac'] > 0 ? $user['total_ac'] : 0 }}</td>
+                        @else
+                            <td class="text-center">
+                                @if ($user['total_submissions'])
+                                    @if ($user['total_ac'] > 0)
+                                        <b><span class="text-success">AC</span></b>
+                                    @else
+                                        <span class="text-danger">WA</span>
+                                    @endif
+                                @endif
+                                
+                            </td>
                         @endif
                     </tr>
                 @endforeach

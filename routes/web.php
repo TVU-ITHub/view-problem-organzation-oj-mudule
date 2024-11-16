@@ -14,8 +14,4 @@ use App\Http\Controllers\OrganizationController;
 |
 */
 
-Route::get('/', function () {
-    dd(Organization::all()->toArray());
-});
-
 Route::get('{organizationSlug}', [OrganizationController::class, 'show'])->name('organization.show');

@@ -11,7 +11,7 @@
         }
     </style>
 </head>
-<body style="background-color: #f0f0f0">
+<body style="background-color: #d9d7d7">
     <div class="container">
         <!-- Content here -->
         @yield('body')
